@@ -12,6 +12,10 @@ Mama* Mama::create_entity() {
     return singleton;
 }
 
+void Mama::destroy_entity() {
+    delete singleton;
+}
+
 Mama* Child1::create_entity() {
     if (singleton == nullptr) {
         singleton = new Child1();
@@ -43,16 +47,36 @@ Mama::Mama()  {
     std::cout << "created object of class Mama." << std::endl;
 }
 
+Mama::~Mama() noexcept {
+    singleton = nullptr;
+    std::cout << "destroyed object of class Mama." << std::endl;
+}
+
 Child1::Child1() {
     std::cout << "created object of class Child1." << std::endl;
+}
+
+Child1::~Child1() noexcept {
+    singleton = nullptr;
+    std::cout << "destroyed object of class Child1." << std::endl;
 }
 
 Child2::Child2() {
     std::cout << "created object of class Child2." << std::endl;
 }
 
+Child2::~Child2() noexcept {
+    singleton = nullptr;
+    std::cout << "destroyed object of class Child2." << std::endl;
+}
+
 Child3::Child3() {
     std::cout << "created object of class Child2." << std::endl;
+}
+
+Child3::~Child3() noexcept {
+    singleton = nullptr;
+    std::cout << "destroyed object of class Child3." << std::endl;
 }
 
 void Mama::get_type() {
