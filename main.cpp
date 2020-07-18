@@ -16,4 +16,5 @@ int main() {
     singleton->get_type();
     
     Child2::destroy_entity();
+    
 }
